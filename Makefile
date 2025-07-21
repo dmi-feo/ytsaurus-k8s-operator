@@ -340,7 +340,7 @@ run: generate-code manifests ## Run a controller from your host.
 
 .PHONY: docker-build
 docker-build: ## Build docker image with the manager.
-	docker build ${DOCKER_BUILD_ARGS} -t ${IMG} .
+	docker build ${DOCKER_BUILD_ARGS} -t ${IMG} --platform linux/arm64 .
 
 .PHONY: docker-push
 docker-push: ## Push docker image with the manager.
