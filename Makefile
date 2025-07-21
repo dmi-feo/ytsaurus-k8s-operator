@@ -22,7 +22,7 @@ YTSAURUS_SPEC ?= config/samples/cluster_v1_cri.yaml
 ENVTEST_K8S_VERSION = 1.24.2
 
 ## YTsaurus operator image name.
-OPERATOR_IMAGE = ytsaurus/k8s-operator
+OPERATOR_IMAGE = ghcr.io/dmi-feo/ytsaurus-k8s-operator
 
 ## YTsaurus operator image tag.
 OPERATOR_TAG = 0.0.0-alpha
@@ -391,8 +391,7 @@ release: kustomize yq  ## Release operator docker image and helm chart.
 	$(MAKE) helm-chart
 	$(YQ) -i -P '.controllerManager.manager.image.repository = "$(OPERATOR_IMAGE_RELEASE)"' ytop-chart/values.yaml
 	helm package $(OPERATOR_CHART)
-	helm push $(OPERATOR_CHART_NAME_RELEASE)-${RELEASE_VERSION}.tgz oci://registry-1.docker.io/ytsaurus
-	helm push $(OPERATOR_CHART_NAME_RELEASE)-${RELEASE_VERSION}.tgz oci://ghcr.io/ytsaurus
+	helm push $(OPERATOR_CHART_NAME_RELEASE)-${RELEASE_VERSION}.tgz oci://ghcr.io/dmi-feo/ytop-chart
 
 ##@ Build Dependencies
 
