@@ -11,7 +11,7 @@ on:
 jobs:
   release:
     name: Run release
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04-arm
 
     steps:
       - name: checkout sources
