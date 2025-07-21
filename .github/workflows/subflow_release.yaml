@@ -31,6 +31,8 @@ jobs:
 
       - name: Build
         shell: bash
+        env:
+          GOARCH: arm64
         run: |
           make build
 
